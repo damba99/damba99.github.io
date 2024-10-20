@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reserva</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            width: 20%; /* Ajustar el ancho del body */
+            margin: auto; /* Centrar el formulario */
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+        input, select {
+            width: 100%; /* Ajustar el ancho de los inputs al 100% del contenedor */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulario de Reserva</h2>
+    <form id="reservation-form" action="https://formspree.io/f/xrbggdvo" method="POST">
+        <div class="form-group">
+            <label for="check-in">Fecha de Ingreso:</label>
+            <input type="date" name="check-in" id="check-in" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="check-out">Fecha de Egreso:</label>
+            <input type="date" name="check-out" id="check-out" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="room-type">Tipo de Habitación:</label>
+            <select id="room-type" class="form-control" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Compartida">Compartida</option>
+                <option value="Privada Matrimonial">Privada Matrimonial</option>
+                <option value="Privada para cuatro">Privada para cuatro</option>
+                <option value="Privada para ocho">Privada para ocho</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="guests">Cantidad de Huéspedes:</label>
+            <input type="number" id="guests" class="form-control" min="1" required>
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+        <div id="client-form" class="hidden">
+            <h4>Datos del Cliente</h4>
+            <div class="form-group">
+                <label>DNI:</label>
+                <input type="text" name="client-dni" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" name="client-name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido:</label>
+                <input type="text" name="client-lastname" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="client-email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Número de Teléfono:</label>
+                <input type="tel" name="client-phone" class="form-control" required>
+            </div>
+        </div>
+
+        <div id="guest-form" class="hidden">
+            <h4>Datos de los Huéspedes</h4>
+            <div id="guest-details"></div>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-3" onclick="validateAndShowForms()">Verificar y Mostrar Formularios</button>
+        <button type="submit" class="btn btn-success mt-3">Enviar Reserva</button>
+    </form>
+</div>
+
+<script>
+    function validateAndShowForms() {
+        const checkIn = new Date(document.getElementById('check-in').value);
+        const checkOut = new Date(document.getElementById('check-out').value);
+        const roomType = document.getElementById('room-type').value;
+        const guestCount = parseInt(document.getElementById('guests').value) || 0;
+        const clientForm = document.getElementById('client-form');
+        const guestForm = document.getElementById('guest-form');
+        const guestDetails = document.getElementById('guest-details');
+        const errorMessage = document.getElementById('error-message');
+
+        // Limpiar mensajes de error
+        errorMessage.textContent = '';
+        guestDetails.innerHTML = ''; // Limpiar detalles de huéspedes
+
+        // Validar fechas
+        if (checkIn >= checkOut) {
+            errorMessage.textContent = 'La fecha de ingreso debe ser anterior a la fecha de egreso.';
+            return;
+        }
+
+        // Validar cantidad de huéspedes según el tipo de habitación
+        if ((roomType === 'Privada Matrimonial' && guestCount > 2) ||
+            (roomType === 'Privada para cuatro' && guestCount > 4) ||
+            (roomType === 'Privada para ocho' && guestCount > 8)) {
+            errorMessage.textContent = `La habitación seleccionada solo permite un máximo de ${roomType === 'Privada Matrimonial' ? 2 : roomType === 'Privada para cuatro' ? 4 : 8} huéspedes.`;
+            return;
+        }
+
+        // Si todo es correcto, mostrar los formularios
+        clientForm.classList.remove('hidden');
+        guestForm.classList.remove('hidden');
+
+        // Generar campos para los datos de los huéspedes
+        for (let i = 0; i < guestCount; i++) {
+            const guestDiv = document.createElement('div');
+            guestDiv.classList.add('guest-info');
+            guestDiv.innerHTML = `
+                <h5>Huésped ${i + 1}</h5>
+                <div class="form-group">
+                    <label>DNI:</label>
+                    <input type="text" name="guest-dni[]" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="guest-name[]" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellido:</label>
+                    <input type="text" name="guest-lastname[]" class="form-control" required>
+                </div>
+            `;
+            guestDetails.appendChild(guestDiv);
+        }
+    }
+</script>
+
+</body>
+</html>
