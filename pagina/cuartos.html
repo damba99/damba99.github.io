@@ -7,6 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     
 <style>
+p{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
 .main {
     min-width: 100%; /* Establece el ancho mínimo del contenedor principal al 100% */
     background-color: #2b2b2b; /* Establece un color de fondo gris oscuro */
@@ -107,17 +115,7 @@
     font-weight: 600; /* Peso de la fuente semi-negrita */
 }
 
-.overlay {
-    position: absolute; /* Posición absoluta para superponer elementos */
-    inset: 0; /* Extiende el overlay por todo el contenedor */
-    pointer-events: none; /* Desactiva eventos del mouse en el overlay */
-    user-select: none; /* Evita la selección de texto */
-    opacity: var(--opacity, 0); /* Opacidad inicial */
-    -webkit-mask: radial-gradient(...); /* Crea una máscara radial para el efecto */
-    mask: radial-gradient(...); /* Máscara radial para el efecto */
-    transition: 400ms mask ease; /* Transición suave para cambios en la máscara */
-    will-change: mask; /* Indica que se va a cambiar la máscara */
-}
+
 
 .overlay .card {
     background-color: hsla(var(--hsl), 0.15); /* Color de fondo semi-transparente */
@@ -165,67 +163,67 @@
         <ain class="main__cards cards">
         <div class="cards__inner">
             <div class="cards__card card">
-                <h2 class="card__heading">Basic</h2>
-                <p class="card__price">$9.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Camas individuales (hab compartida)</h2>
+                <p class="card__price">$20000</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to standard workouts and nutrition plans</li>
                     <li>Email support</li>
-                </ul>
-                <a href="#basic" class="card__cta cta">Get Started</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
             <div class="cards__card card">
-                <h2 class="card__heading">Pro</h2>
-                <p class="card__price">$19.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Camas Matrimoniales (hab compartida)</h2>
+                <p class="card__price">$3700 por persona</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to advanced workouts and nutrition plans</li>
                     <li>Priority Email support</li>
                     <li>Exclusive access to live Q&A sessions</li>
-                </ul>
-                <a href="#pro" class="card__cta cta">Upgrade to Pro</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
             <div class="cards__card card">
-                <h2 class="card__heading">Ultimate</h2>
-                <p class="card__price">$29.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Para 4 personas baño privado </h2>
+                <p class="card__price">$26000</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to all premium workouts and nutrition plans</li>
                     <li>24/7 Priority support</li>
                     <li>1-on-1 virtual coaching session every month</li>
                     <li>Exclusive content and early access to new features</li>
-                </ul>
-                <a href="#ultimate" class="card__cta cta">Go Ultimate</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
         </div>
         <div class="cards__inner">
             <div class="cards__card card">
-                <h2 class="card__heading">Standard</h2>
-                <p class="card__price">$14.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Matrimonial baño compartido </h2>
+                <p class="card__price">$9500</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to standard workouts and nutrition plans</li>
                     <li>Email support</li>
                     <li>Monthly newsletter</li>
-                </ul>
-                <a href="#standard" class="card__cta cta">Choose Standard</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
             <div class="cards__card card">
-                <h2 class="card__heading">Family</h2>
-                <p class="card__price">$39.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Matrimonial baño privado</h2>
+                <p class="card__price">$11500</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to all family-friendly workouts</li>
                     <li>Personalized meal plans for families</li>
                     <li>Family group coaching sessions</li>
-                </ul>
-                <a href="#family" class="card__cta cta">Book Family</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
             <div class="cards__card card">
-                <h2 class="card__heading">Luxury</h2>
-                <p class="card__price">$59.99</p>
-                <ul role="list" class="card__bullets flow">
+                <h2 class="card__heading">Para 8 personas baño privado</h2>
+                <p class="card__price">$4500 por persona</p>
+                <!-- <ul role="list" class="card__bullets flow">
                     <li>Access to exclusive luxury workouts</li>
                     <li>1-on-1 coaching with a nutritionist</li>
                     <li>Personalized wellness retreat</li>
                     <li>Priority booking for events</li>
-                </ul>
-                <a href="#luxury" class="card__cta cta">Experience Luxury</a>
+                </ul> -->
+                <a href="reservas.html" class="card__cta cta">Reservar</a>
             </div>
         </div>
         <div class="overlay cards__inner"></div>
