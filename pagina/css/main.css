@@ -17,7 +17,7 @@ body{
     /* background-color: #EECC8C; */
     display: block;
     padding: 20px;
-    background-image: url('pagina\images\fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-image: url('/pagina/images/fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
     background-size: cover; /* Esto asegura que la imagen cubra todo el espacio del header */
     background-position: center; /* Esto centra la imagen en el header */
     
@@ -73,7 +73,7 @@ body{
 
 .carrusel-imagenes {
     justify-content: space-around;
-    background-color: #353535; /*color para el fondo  */
+    background-color: #211f17; /*color para el fondo  */
     display: flex;
     gap: 1rem;
 }
