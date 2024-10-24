@@ -1,94 +1,23 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
+
 body{
     background-color: #211f17;
-}
-
+    }
+/* =============================================================================== */
+/* =============================================================================== */
 /* =============================================================================== */
 
-.roboto-thin {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-}
-
-.roboto-light {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.roboto-medium {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.roboto-bold {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.roboto-black {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-}
-
-.roboto-thin-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-}
-
-.roboto-light-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
-.roboto-regular-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.roboto-medium-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-}
-
-.roboto-bold-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.roboto-black-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-}
-
-/* =============================================================================== */
 /* header */
 
 .tm-header{
     /* background-color: #EECC8C; */
     display: block;
     padding: 20px;
-    background-image: url('/images/fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-image: url('pagina\images\fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
     background-size: cover; /* Esto asegura que la imagen cubra todo el espacio del header */
     background-position: center; /* Esto centra la imagen en el header */
     
@@ -136,14 +65,11 @@ body{
     color: #ec3c6a;
 }
 
-/* .tm-list::after{
-    content: url("../images/circle.png");
-} esto le agrega circulitos al menu*/
-
+/* =============================================================================== */
+/* =============================================================================== */
 /* =============================================================================== */
 
-
-
+/* Imagenes pagina principal */
 
 .carrusel-imagenes {
     justify-content: space-around;
@@ -151,7 +77,6 @@ body{
     display: flex;
     gap: 1rem;
 }
-
 
 .carrusel.unico {
     display: flex;  /* Los elementos hijos se colocarán en una fila horizontal */
@@ -231,62 +156,11 @@ body{
     background: rgba(0, 0, 0, 0.8);  /* Fondo más oscuro para indicar que el elemento es interactivo */
 }
 
-
 /* =============================================================================== */
-/* room */
+/* =============================================================================== */
+/* =============================================================================== */
 
-
-.tm-rooms:focus {
-    outline: none;
-}
-.tm-rooms a:focus {
-    outline: none;
-}
-
-.tm-rooms{
-    display: block;
-    background: #353535;
-    max-width: 33.33%;
-    width: 33.33%;
-}
-
-
-.tm-rooms img{
-    max-width: 100%;
-    width: 100%;
-}
-
-
-
-.tm-rooms p{
-    font-size: 2.5vw;
-    color: #fff;
-    text-align: center;
-padding: 5%;
-
-  
-}
-
-.tm-rooms a{
-    text-decoration: none;
-}
-
-.tm-rooms a p:hover{
-    color: #ec3c6a;
-
-
-}
-
-.s{
-    padding-bottom: 1%;
-}
-
-.flex{
-    display: flex;
-}
-
-
-/* services */
+/* servicios pagina principal */
 
 .tm-service{
     max-width: 30%;
@@ -305,8 +179,7 @@ padding: 5%;
     width: 10%;
     height: auto;
     padding-bottom: 10%;
-
-
+    filter: brightness(0) invert(1);
 }
 
 .tm-service div{
@@ -326,15 +199,16 @@ padding: 5%;
 }
 
 /* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
 
-/* Make reservation */
+/* Boton de hacer reservas */
 
 .tm-res{
     background: #cc4151;
     padding: 2%;
 
 }
-
 
 .tm-resbutton p{
     display: table;
@@ -355,6 +229,10 @@ padding: 5%;
     color: #ec3c6a;
     background: #fff;
 }
+
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
 
 /* footer */
 
@@ -377,7 +255,7 @@ padding: 5%;
     display: inline-table;
     max-width: 30%;
     width: 30%;
-     margin: 2% 0 2% 25%
+    margin: 2% 0 2% 25%
 }
 
 .tm-us .bold, .tm-address .bold{
@@ -393,20 +271,18 @@ padding: 5%;
 }
 
 .tm-media{
-   display: inline;
+    display: inline;
     margin: 0 0 0 59%;
- 
-
 }
+
 .tm-media img{
-  margin: 0.5%;
+    margin: 0.5%;
     width: 3%;
     height: auto;
     
 }
 
-.tm-up
-{
+.tm-up{
     position: absolute;
     top: 20%;
     right: 3%;
@@ -423,97 +299,25 @@ padding: 5%;
     outline: none;
 }
 
-
-/* Explore page */
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
 
 .tm-main{
-      background: #cc4151;
-    padding: 2%;
+        background-color: #ec3c6a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        color: white;
+        font-weight: 600;
+        font-size: 2.25em;
+    }
+
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
+
+.main__heading{
+    padding-top: 2rem;
 }
-
-.tm-main p{
-    display: table;
-    max-width: 30%;
-    margin: 0 auto;
-    font-size: 4vw;
-     padding: 2%;
-    color: #fff;
-    font-weight: 700;
-}
-
-
-/* rooms page */
-
-.tm-roomsection{
-    display: flex;
-}
-
-.tm-room1{
-    max-width: 33.33333%;
-    width: 33.333333%;
-    background: #353535;
-    
-display: inline-block;
-    margin: 0px;
-    position: relative;
-}
-
-.tm-room1 p{
-    font-size: 2.5vw;
-    color: #fff;
-    text-align: center;
-    padding: 5%;
-    z-index: 2;
-    position: relative;
-}
-
-
-.tm-roomimage{
-    max-width: 100%;
-    width: 100%;    
-}
-
-.tm-trans{
-    display: inline-block;
-    position: absolute;
-    top: 78%; /*78*/
-   color: #fff;
-     max-width: 100%;
-    width: 100%;
-    height: 0%; /*0*/
-     background: rgba(53, 53, 53,0.7);
-    opacity: 0; /*0*/
-}
-
-.tm-trans p{
-    font-size: 1.8vw;
-
-}
-.tm-trans div{
-    display: inline-table;
-    width: 40%;
-    max-width: 40%;
-    margin: 2%;
-}
-
-.tm-trans div .bold{
-    color: #ff8d9a;
-
-}
-
-
-.tm-room1:hover .tm-trans{
- 
-    top:30%;
-   
-    transition: top 1s, opacity 1s, height 1s;
-       opacity: 1;
-     height: 50%;
-    z-index: 1;
-}
-
-
-
-
-
-
