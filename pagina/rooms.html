@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Hotel nuevo puesto</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/jquery.scrollUp.js"></script>
+    <script type="text/javascript" src="dist/demo.js"></script>
+<style>
+.main {
+    min-width: 100%; /* Establece el ancho mínimo del contenedor principal al 100% */
+    background-color: #2b2b2b; /* Establece un color de fondo gris oscuro */
+}
+
+.main__heading {
+    font-weight: 600; /* Peso de la fuente semi-negrita */
+    font-size: 2.25em; /* Tamaño de la fuente grande */
+    margin-bottom: 0.75em; /* Margen inferior para separación */
+    text-align: center; /* Centra el texto */
+    color: #eceff1; /* Color de texto claro */
+}
+
+.cards {
+    position: relative; /* Posición relativa para elementos hijos */
+}
+
+.cards__inner {
+    display: flex; /* Usa flexbox para el layout */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples filas */
+    gap: 2em; /* Espacio entre los elementos */
+    margin-top: 2rem;/* Margen alrededor del contenedor */
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 3rem; 
+}
+
+.card {
+    --flow-space: 0.5em; /* Variable personalizada para espacio entre elementos */
+    --hsl: var(--hue), var(--saturation), var(--lightness); /* Variable HSL para el color */
+    flex: 1 1 14rem; /* Flexibilidad del elemento, ocupando al menos 14rem */
+    padding: 1.5em 2em; /* Padding interno */
+    display: grid; /* Usa grid para el layout interno */
+    grid-template-rows: auto auto auto 1fr; /* Define filas en la cuadrícula */
+    align-items: start; /* Alinea elementos al inicio */
+    gap: 1.25em; /* Espacio entre elementos en la cuadrícula */
+    color: #eceff1; /* Color de texto claro */
+    background-color: #2b2b2b; /* Color de fondo gris oscuro */
+    border: 1px solid #eceff133; /* Borde semi-transparente */
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+/* Estilos para cada tarjeta con diferentes colores */
+.card:nth-child(1) {
+    --hue: 165; /* Color para la primera tarjeta */
+    --saturation: 82.26%;
+    --lightness: 51.37%;
+}
+
+.card:nth-child(2) {
+    --hue: 291.34; /* Color para la segunda tarjeta */
+    --saturation: 95.9%;
+    --lightness: 61.76%;
+}
+
+.card:nth-child(3) {
+    --hue: 338.69; /* Color para la tercera tarjeta */
+    --saturation: 100%;
+    --lightness: 48.04%;
+}
+
+.card__bullets {
+    line-height: 1.4; /* Altura de línea para una mejor legibilidad */
+}
+
+.card__bullets li::before {
+    display: inline-block; /* Permite que el ícono se alinee al lado del texto */
+    content: url("data:image/svg+xml,..."); /* Ícono SVG de un check */
+    transform: translatey(0.25ch); /* Ajusta la posición del ícono */
+    margin-right: 1ch; /* Espacio a la derecha del ícono */
+}
+
+.card__heading {
+    font-size: 1.05em; /* Tamaño de fuente para el encabezado de la tarjeta */
+    font-weight: 600; /* Peso de la fuente semi-negrita */
+}
+
+.card__price {
+    font-size: 1.75em; /* Tamaño grande para el precio */
+    font-weight: 700; /* Peso de la fuente negrita */
+}
+
+.flow > * + * {
+    margin-top: var(--flow-space, 1.25em); /* Margen entre elementos de la clase flow */
+}
+
+.cta {
+    display: block; /* Hace que el botón sea un bloque */
+    align-self: end; /* Alinea el botón al final del contenedor */
+    margin: 1em 0 0.5em 0; /* Margen para separación */
+    text-align: center; /* Centra el texto del botón */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #fff; /* Color de texto blanco */
+    background-color: #0d0d0d; /* Color de fondo oscuro para el botón */
+    padding: 0.7em; /* Padding interno del botón */
+    border-radius: 10px; /* Bordes redondeados del botón */
+    font-size: 1rem; /* Tamaño de fuente del botón */
+    font-weight: 600; /* Peso de la fuente semi-negrita */
+}
+
+.overlay {
+    position: absolute; /* Posición absoluta para superponer elementos */
+    inset: 0; /* Extiende el overlay por todo el contenedor */
+    pointer-events: none; /* Desactiva eventos del mouse en el overlay */
+    user-select: none; /* Evita la selección de texto */
+    opacity: var(--opacity, 0); /* Opacidad inicial */
+    -webkit-mask: radial-gradient(...); /* Crea una máscara radial para el efecto */
+    mask: radial-gradient(...); /* Máscara radial para el efecto */
+    transition: 400ms mask ease; /* Transición suave para cambios en la máscara */
+    will-change: mask; /* Indica que se va a cambiar la máscara */
+}
+
+.overlay .card {
+    background-color: hsla(var(--hsl), 0.15); /* Color de fondo semi-transparente */
+    border-color: hsla(var(--hsl), 1); /* Color de borde */
+    box-shadow: 0 0 0 1px inset hsl(var(--hsl)); /* Sombra interna */
+}
+
+.overlay .cta {
+    display: block; /* Hace que el botón sea un bloque */
+    grid-row: -1; /* Coloca el botón al final de la cuadrícula */
+    width: 100%; /* Ancho completo del botón */
+    background-color: hsl(var(--hsl)); /* Color de fondo para el botón */
+    box-shadow: 0 0 0 1px hsl(var(--hsl)); /* Sombra para el botón */
+}
+
+:not(.overlay) > .card {
+    transition: 400ms background ease; /* Transición suave para el fondo de las tarjetas */
+    will-change: background; /* Indica que se va a cambiar el fondo */
+}
+
+:not(.overlay) > .card:hover {
+    --lightness: 95%; /* Cambia la variable de luz al pasar el mouse */
+    background: hsla(var(--hsl), 0.1); /* Color de fondo al pasar el mouse */
+}
+ </style>
+</head>
+<body>
+    <header class="tm-header">
+        <img class="tm-logo" src="images/logo.png" alt="Majestic Hotel">
+        <nav class="tm-nav" >
+        <div>
+            <ul>
+                <li class="tm-list"><a href="index.html">Inicio</a></li>
+                <li class="tm-list"><a href="rooms.html">Cuartos</a></li>
+                <li class="tm-list"><a href="bb.html">Reservar</a></li>
+            </ul>    
+            </div>
+        </nav>
+    </header>
+    <section class="tm-main">
+        <p>Cuartos</p>
+    </section>
+    <main class="main flow">
+        <h1 class="main__heading">Precio</h1>
+        <ain class="main__cards cards">
+        <div class="cards__inner">
+            <div class="cards__card card">
+            <h2 class="card__heading">Basic</h2>
+            <p class="card__price">$9.99</p>
+            <ul role="list" class="card__bullets flow">
+                <li>Access to standard workouts and nutrition plans</li>
+                <li>Email support</li>
+            </ul>
+            <a href="#basic" class="card__cta cta">Get Started</a>
+            </div>
+            <div class="cards__card card">
+            <h2 class="card__heading">Pro</h2>
+            <p class="card__price">$19.99</p>
+            <ul role="list" class="card__bullets flow">
+                <li>Access to advanced workouts and nutrition plans</li>
+                <li>Priority Email support</li>
+                <li>Exclusive access to live Q&A sessions</li>
+            </ul>
+            <a href="#pro" class="card__cta cta">Upgrade to Pro</a>
+            </div>
+            <div class="cards__card card">
+            <h2 class="card__heading">Ultimate</h2>
+            <p class="card__price">$29.99</p>
+            <ul role="list" class="card__bullets flow">
+                <li>Access to all premium workouts and nutrition plans</li>
+                <li>24/7 Priority support</li>
+                <li>1-on-1 virtual coaching session every month</li>
+                <li>Exclusive content and early access to new features</li>
+            </ul>
+            <a href="#ultimate" class="card__cta cta">Go Ultimate</a>
+            </div>
+        </div>
+        <div class="cards__inner">
+            <div class="cards__card card">
+                <h2 class="card__heading">Standard</h2>
+                <p class="card__price">$14.99</p>
+                <ul role="list" class="card__bullets flow">
+                    <li>Access to standard workouts and nutrition plans</li>
+                    <li>Email support</li>
+                    <li>Monthly newsletter</li>
+                </ul>
+                <a href="#standard" class="card__cta cta">Choose Standard</a>
+            </div>
+            <div class="cards__card card">
+                <h2 class="card__heading">Family</h2>
+                <p class="card__price">$39.99</p>
+                <ul role="list" class="card__bullets flow">
+                    <li>Access to all family-friendly workouts</li>
+                    <li>Personalized meal plans for families</li>
+                    <li>Family group coaching sessions</li>
+                </ul>
+                <a href="#family" class="card__cta cta">Book Family</a>
+            </div>
+            <div class="cards__card card">
+                <h2 class="card__heading">Luxury</h2>
+                <p class="card__price">$59.99</p>
+                <ul role="list" class="card__bullets flow">
+                    <li>Access to exclusive luxury workouts</li>
+                    <li>1-on-1 coaching with a nutritionist</li>
+                    <li>Personalized wellness retreat</li>
+                    <li>Priority booking for events</li>
+                </ul>
+                <a href="#luxury" class="card__cta cta">Experience Luxury</a>
+            </div>
+        </div>
+        <div class="overlay cards__inner"></div>
+    </main>
+    <section class="tm-makeres">
+    <div class="tm-res">
+        <div class="tm-resbutton">
+            <a href="bb.html"> <p>Hacer reserva</p></a>
+        </div>
+        </div>
+    </section>
+    <footer class="tm-footer">
+        <div class="tm-us">
+        <p class="bold">Sobre Nosotros</p>
+        <p>Somos un equipo apasionado por la hospitalidad, comprometido a brindar a nuestros huéspedes una experiencia de alojamiento única y memorable en la hermosa ciudad de Salta. Desde nuestra fundación en 1999, hemos evolucionado de una casa de pensión a un moderno hostal, manteniendo siempre nuestro enfoque en la calidad del servicio y el bienestar de nuestros visitantes.</p>    
+        </div>
+    
+        <div class="tm-address">
+        <p class="bold">Ubicacion</p>
+        <p>Avenida Jujuy N° 159, A4400 Salta<br>
+        Numero : 0387 449-4594 <br>
+        Email : HostalNuevoP@hotmail.com</p>    
+        <!-- <div class="tm-media">
+            <a href="#"> <img src="images/fb.png"></a>
+            <a href="#"> <img src="images/G.png"> </a>
+            <a href="#"> <img src="images/twittr.png"> </a>
+            <a href="#">  <img src="images/insta.png"> </a>
+        </div> -->
+        </div>
+    </footer>
+    
+
+    
+    </body>
+    
+</html>
+    

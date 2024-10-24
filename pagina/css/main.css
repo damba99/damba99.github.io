@@ -1,0 +1,519 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    background-color: #211f17;
+}
+
+/* =============================================================================== */
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* =============================================================================== */
+/* header */
+
+.tm-header{
+    /* background-color: #EECC8C; */
+    display: block;
+    padding: 20px;
+    background-image: url('/images/fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover; /* Esto asegura que la imagen cubra todo el espacio del header */
+    background-position: center; /* Esto centra la imagen en el header */
+    
+}
+
+.tm-logo{
+    align-content: center;
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    border-radius: 50px;
+}
+
+.tm-nav{
+    position: sticky; top: 0;
+    max-width: 90%;
+    border: 2px solid #3a382e;
+    border-radius: 25px;
+    display: block;
+    margin: 30px auto 5px auto;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    border: 2px solid rgb(255,255,255,0.18);
+}
+
+.tm-nav div{
+    display: table;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.tm-nav div ul li{
+    display:inline-block;  
+}
+
+.tm-nav div ul li a{
+    font-size: 1.8vmax;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff;
+    line-height: 50px;
+}
+
+.tm-nav div ul li a:hover{
+    color: #ec3c6a;
+}
+
+/* .tm-list::after{
+    content: url("../images/circle.png");
+} esto le agrega circulitos al menu*/
+
+/* =============================================================================== */
+
+
+
+
+.carrusel-imagenes {
+    justify-content: space-around;
+    background-color: #353535; /*color para el fondo  */
+    display: flex;
+    gap: 1rem;
+}
+
+
+.carrusel.unico {
+    display: flex;  /* Los elementos hijos se colocarán en una fila horizontal */
+    flex-wrap: nowrap;  /* Evita que los elementos se muevan a una nueva línea */
+    gap: 3.5rem;
+}
+
+.carrusel-item {
+    position: relative;  /* Esto permite que los textos dentro del item se posicionen en relación con él */
+    min-width: 100%;  /* Cada item ocupa el 100% del ancho del contenedor del carrusel */
+    margin-top:  3rem;
+    margin-bottom: 3rem;
+}
+
+
+.imagen-carrusel {
+    width: 350px;  /* La imagen ocupa todo el ancho del item */
+    height: 350px;  /* La altura se ajusta automáticamente para mantener la proporción de la imagen */
+    display: block;  /* Asegura que la imagen se comporte como un bloque y no como un inline element */
+    border-radius: 25px ;
+    border: 3px solid white;
+    transition: transform 0.3s ease; /* Agrega la transición para el efecto de transformación */
+}
+
+
+.imagen-carrusel:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen al pasar el mouse */
+}
+
+
+.texto-carrusel {
+    position: absolute;  /* Se posiciona en relación con el item del carrusel */
+    bottom: 20px;  /* A 20px de la parte inferior del item */
+    left: 50%;  /* A 50% del borde izquierdo del contenedor */
+    transform: translateX(-50%);  /* Desplaza el contenedor hacia la izquierda por la mitad de su ancho */
+    color: #fff;  /* El texto será blanco para contrastar con el fondo */
+    padding: 10px;  /* Espaciado interno alrededor del texto */
+    border-radius: 25px;  /* Bordes ligeramente redondeados para darle un aspecto moderno */
+    max-width: 300px;  /* Limita el ancho del bloque de texto */
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
+    border: 2px solid rgb(255,255,255,0.18);
+}
+
+.negrita {
+    font-weight: bold;  /* Hace que el texto sea más grueso */
+    font-size: 1.5rem;  /* Tamaño de fuente más grande para resaltar este texto */
+    margin-bottom: 5px;  /* Espacio inferior entre este texto y el siguiente párrafo */
+}
+
+.simple {
+    font-size: 1rem;  /* Tamaño de fuente estándar */
+    margin: 2px 0;  /* Espaciado vertical entre los párrafos simples */
+}
+
+.izquierda, .derecha {
+    position: absolute;  /* Se posicionan en relación al contenedor del carrusel */
+    top: 50%;  /* Se colocan en el centro vertical del contenedor */
+    transform: translateY(-50%);  /* Ajuste preciso para centrar verticalmente */
+    font-size: 2rem;  /* Tamaño grande de la flecha para que sea visible */
+    color: #fff;  /* Las flechas son blancas */
+    background: rgba(0, 0, 0, 0.5);  /* Fondo semitransparente para resaltar sobre la imagen */
+    padding: 10px;  /* Espaciado interno alrededor de la flecha */
+    cursor: pointer;  /* Muestra un cursor de mano para indicar que son interactuables */
+    border-radius: 50%;  /* Bordes redondeados para darles un estilo circular */
+}
+
+.izquierda {
+    left: 10px;  /* A 10px del borde izquierdo del contenedor */
+}
+
+.derecha {
+    right: 10px;  /* A 10px del borde derecho del contenedor */
+}
+
+.izquierda:hover, .derecha:hover {
+    background: rgba(0, 0, 0, 0.8);  /* Fondo más oscuro para indicar que el elemento es interactivo */
+}
+
+
+/* =============================================================================== */
+/* room */
+
+
+.tm-rooms:focus {
+    outline: none;
+}
+.tm-rooms a:focus {
+    outline: none;
+}
+
+.tm-rooms{
+    display: block;
+    background: #353535;
+    max-width: 33.33%;
+    width: 33.33%;
+}
+
+
+.tm-rooms img{
+    max-width: 100%;
+    width: 100%;
+}
+
+
+
+.tm-rooms p{
+    font-size: 2.5vw;
+    color: #fff;
+    text-align: center;
+padding: 5%;
+
+  
+}
+
+.tm-rooms a{
+    text-decoration: none;
+}
+
+.tm-rooms a p:hover{
+    color: #ec3c6a;
+
+
+}
+
+.s{
+    padding-bottom: 1%;
+}
+
+.flex{
+    display: flex;
+}
+
+
+/* services */
+
+.tm-service{
+    max-width: 30%;
+    width: 30%;
+    margin: 1.5% 12% 1.5% 10%;  
+}
+
+.tm-servicesection{
+    display: flex;
+    color: white;
+}
+
+.tm-serimage{
+    display: inline-block;
+    max-width: 20%;
+    width: 10%;
+    height: auto;
+    padding-bottom: 10%;
+
+
+}
+
+.tm-service div{
+    display: inline-block;
+
+    max-width: 75%;
+    padding: 5%;
+}
+
+.tm-service p{
+    font-size: 1.5vmax;
+    
+}
+.tm-service .b{
+    padding-bottom: 2%;
+    font-weight: 700;
+}
+
+/* =============================================================================== */
+
+/* Make reservation */
+
+.tm-res{
+    background: #cc4151;
+    padding: 2%;
+
+}
+
+
+.tm-resbutton p{
+    display: table;
+    max-width: 30%;
+    margin: 0 auto;
+    font-size: 2.5vw;
+    padding: 2%;
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid #fff;
+    border-radius: 25px;
+}
+.tm-resbutton a{
+    text-decoration: none;
+}
+
+.tm-resbutton p:hover{
+    color: #ec3c6a;
+    background: #fff;
+}
+
+/* footer */
+
+.tm-footer{
+    background: #211f17;
+    display: block;
+    padding: 20px;
+    position: relative;
+
+}
+
+.tm-us{
+    display: inline-table;
+    max-width: 30%;
+    width: 30%;
+    margin: 2% 0 2% 4%
+}
+
+.tm-address{
+    display: inline-table;
+    max-width: 30%;
+    width: 30%;
+     margin: 2% 0 2% 25%
+}
+
+.tm-us .bold, .tm-address .bold{
+    color: #ec3c6a;
+    font-size: 1.5vw;
+    font-weight: 700;
+    padding-bottom: 4%;
+}
+
+.tm-us p, .tm-address p{
+    color: #fff;
+    font-size: 1.2vw;
+}
+
+.tm-media{
+   display: inline;
+    margin: 0 0 0 59%;
+ 
+
+}
+.tm-media img{
+  margin: 0.5%;
+    width: 3%;
+    height: auto;
+    
+}
+
+.tm-up
+{
+    position: absolute;
+    top: 20%;
+    right: 3%;
+    width: 3%;
+    height: auto;
+    
+}
+
+.tm-review:focus{
+    outline: none;
+}
+
+.tm-revcon:focus{
+    outline: none;
+}
+
+
+/* Explore page */
+
+.tm-main{
+      background: #cc4151;
+    padding: 2%;
+}
+
+.tm-main p{
+    display: table;
+    max-width: 30%;
+    margin: 0 auto;
+    font-size: 4vw;
+     padding: 2%;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* rooms page */
+
+.tm-roomsection{
+    display: flex;
+}
+
+.tm-room1{
+    max-width: 33.33333%;
+    width: 33.333333%;
+    background: #353535;
+    
+display: inline-block;
+    margin: 0px;
+    position: relative;
+}
+
+.tm-room1 p{
+    font-size: 2.5vw;
+    color: #fff;
+    text-align: center;
+    padding: 5%;
+    z-index: 2;
+    position: relative;
+}
+
+
+.tm-roomimage{
+    max-width: 100%;
+    width: 100%;    
+}
+
+.tm-trans{
+    display: inline-block;
+    position: absolute;
+    top: 78%; /*78*/
+   color: #fff;
+     max-width: 100%;
+    width: 100%;
+    height: 0%; /*0*/
+     background: rgba(53, 53, 53,0.7);
+    opacity: 0; /*0*/
+}
+
+.tm-trans p{
+    font-size: 1.8vw;
+
+}
+.tm-trans div{
+    display: inline-table;
+    width: 40%;
+    max-width: 40%;
+    margin: 2%;
+}
+
+.tm-trans div .bold{
+    color: #ff8d9a;
+
+}
+
+
+.tm-room1:hover .tm-trans{
+ 
+    top:30%;
+   
+    transition: top 1s, opacity 1s, height 1s;
+       opacity: 1;
+     height: 50%;
+    z-index: 1;
+}
+
+
+
+
+
+
