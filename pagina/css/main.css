@@ -17,7 +17,7 @@ body{
     /* background-color: #EECC8C; */
     display: block;
     padding: 20px;
-    background-image: url('/images/fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-image: url('https://images.unsplash.com/photo-1601083156151-9dbc2697630c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FmYXlhdGV8ZW58MHx8MHx8fDA%3D'); /* Cambia esto por la ruta de tu imagen */
     background-size: cover; /* Esto asegura que la imagen cubra todo el espacio del header */
     background-position: center; /* Esto centra la imagen en el header */
     
