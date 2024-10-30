@@ -132,21 +132,21 @@
                                 <input type="hidden" id="comp-matrimonial" name="comp-matrimonial" class="styled-checkbox" value="false">
                             </div>
                             <div style="flex: 1; margin-right: 10px;">
-                                <label for="private-matrimonial" class="styled-label">Privada Matrimonial</label>
-                                <button type="button" class="toggle-button" id="private-matrimonial-btn" onclick="toggleButton(this)"></button>
-                                <input type="hidden" id="private-matrimonial" name="private-matrimonial" class="styled-checkbox" value="false">
+                                <label for="private_matrimonial" class="styled-label">Privada Matrimonial</label>
+                                <button type="button" class="toggle-button" id="private_matrimonial-btn" onclick="toggleButton(this)"></button>
+                                <input type="hidden" id="private_matrimonial" name="private_matrimonial" class="styled-checkbox" value="false">
                             </div>
                         </div>
                         <div class="form-group" style="display: flex; justify-content: space-between;">
                             <div style="flex: 1; margin-right: 10px;">
-                                <label for="private-four" class="styled-label">Privada para 4 personas</label>
-                                <button type="button" class="toggle-button" id="private-four-btn" onclick="toggleButton(this)"></button>
-                                <input type="hidden" id="private-four" name="private-four" class="styled-checkbox" value="false">
+                                <label for="private_four" class="styled-label">Privada para 4 personas</label>
+                                <button type="button" class="toggle-button" id="private_four-btn" onclick="toggleButton(this)"></button>
+                                <input type="hidden" id="private_four" name="private_four" class="styled-checkbox" value="false">
 
                             </div>
                             <div style="flex: 1;">
-                                <label for="private-eight">Privada para 8 personas:</label>
-                                <select id="private-eight" name="private-eight" class="form-control">
+                                <label for="private_eight">Privada para 8 personas:</label>
+                                <select id="private_eight" name="private_eight" class="form-control">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -158,12 +158,12 @@
                         <h5>Selecciona tipo de cama</h5>
                         <div class="form-group" style="display: flex; justify-content: space-between;">
                             <div style="flex: 1; margin-right: 10px;">
-                                <label for="individual-beds">Camas Individuales:</label>
-                                <input type="number" id="individual-beds" name="individual-beds" class="form-control" min="0" placeholder="Número de camas" default="0">
+                                <label for="individual_beds">Camas Individuales:</label>
+                                <input type="number" id="individual_beds" name="individual_beds" class="form-control" min="0" placeholder="Número de camas" default="0">
                             </div>
                             <div style="flex: 1;">
-                                <label for="matrimonial-beds">Camas Matrimoniales:</label>
-                                <input type="number" id="matrimonial-beds" name="matrimonial-beds" class="form-control" min="0" placeholder="Número de camas" default="0">
+                                <label for="matrimonial_beds">Camas Matrimoniales:</label>
+                                <input type="number" id="matrimonial_beds" name="matrimonial_beds" class="form-control" min="0" placeholder="Número de camas" default="0">
                             </div>
                         </div>
                         <div id="combination-message" class="error"></div>
@@ -279,12 +279,12 @@
                 const codigoPostal = document.getElementById('codigo_postal').value;
 
                 // Capturar opciones de camas
-                const individualBeds = document.getElementById('individual-beds').value;
-                const matrimonialBeds = document.getElementById('matrimonial-beds').value;
+                const individualBeds = document.getElementById('individual_beds').value;
+                const matrimonialBeds = document.getElementById('matrimonial_beds').value;
 
                 // Capturar opciones de habitaciones
-                const privateMatrimonial = document.getElementById('private-matrimonial').value;
-                const privateFour = document.getElementById('private-four').value;
+                const privateMatrimonial = document.getElementById('private_matrimonial').value;
+                const privateFour = document.getElementById('private_four').value;
 
                 // Generar salida
                 const resultadoDiv = document.getElementById('resultado');
