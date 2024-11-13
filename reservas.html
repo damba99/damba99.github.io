@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Hostal Nuevo Puesto</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #211f17;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #211f17;
+        }
+        .form-section {
+            display: block;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 500px;
+        }
+        #reservation-div, #confirmation-div {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 2px;
+            margin: 0 10px;
+        }
+        label {
+            color: white;
+        }
+        h2, h5 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            width: 50%;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .select-cont {
+            width: 100%;
+        }
+        .form-group input, .form-group select {
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+        .styled-label {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .toggle-button {
+            padding: 10px 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            width: 200px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .toggle-button.selected {
+            background-color: #28a745;
+        }
+        .toggle-button::before {
+            content: "Seleccionar";
+        }
+        .toggle-button.selected::before {
+            content: "Seleccionado";
+        }
+        #resultado {
+            margin-top: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="tm-header">
+        <img class="tm-logo" src="images/logo.png" alt="Majestic Hotel">
+        <nav class="tm-nav">
+            <div>
+                <ul>
+                    <li class="tm-list"><a href="index.html">Inicio</a></li>
+                    <li class="tm-list"><a href="cuartos.html">Cuartos</a></li>
+                    <li class="tm-list"><a href="reservas.html">Reservar</a></li>
+                </ul>    
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <form id="reservation-form" action="https://formspree.io/f/xrbggdvo" method="POST">
+            <div style="display: flex;">
+                <div class="form-section" id="reservation-div">
+                    <h2>Formulario de Reserva</h2>
+                    <div class="form-group">
+                        <label for="check-in">Fecha de Ingreso:</label>
+                        <input type="date" name="check-in" id="check-in" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Fecha de Egreso:</label>
+                        <input type="date" name="check-out" id="check-out" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Servicio:</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="camas" name="servicio" value="Camas">
+                            <label class="form-check-label" for="camas">Camas</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="habitaciones" name="servicio" value="Habitaciones">
+                            <label class="form-check-label" for="habitaciones">Habitaciones</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Cantidad de Huéspedes:</label>
+                        <input type="number" id="guests" name="guests" class="form-control" min="1" required>
+                    </div>
+                    <div id="private-options" style="display: none;">
+                        <h5>Selecciona tipo de habitación</h5>
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="comp-matrimonial" class="styled-label">Compartida Matrimonial</label>
+                                <button type="button" class="toggle-button" id="comp-matrimonial-btn" onclick="toggleButton(this)"></button>
+                                <input type="hidden" id="comp-matrimonial" name="comp-matrimonial" class="styled-checkbox" value="false">
+                            </div>
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="private_matrimonial" class="styled-label">Privada Matrimonial</label>
+                                <button type="button" class="toggle-button" id="private_matrimonial-btn" onclick="toggleButton(this)"></button>
+                                <input type="hidden" id="private_matrimonial" name="private_matrimonial" class="styled-checkbox" value="false">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="private_four" class="styled-label">Privada para 4 personas</label>
+                                <button type="button" class="toggle-button" id="private_four-btn" onclick="toggleButton(this)"></button>
+                                <input type="hidden" id="private_four" name="private_four" class="styled-checkbox" value="false">
+
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="private_eight">Privada para 8 personas:</label>
+                                <select id="private_eight" name="private_eight" class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="shared-bed-options" style="display: none;">
+                        <h5>Selecciona tipo de cama</h5>
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="individual_beds">Camas Individuales:</label>
+                                <input type="number" id="individual_beds" name="individual_beds" class="form-control" min="0" placeholder="Número de camas" default="0">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="matrimonial_beds">Camas Matrimoniales:</label>
+                                <input type="number" id="matrimonial_beds" name="matrimonial_beds" class="form-control" min="0" placeholder="Número de camas" default="0">
+                            </div>
+                        </div>
+                        <div id="combination-message" class="error"></div>
+                    </div>
+                </div>
+                <div class="form-section" id="confirmation-div">
+                    <h2>Detalles de Facturación</h2>
+                    <div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos *</label>
+                            <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">DNI/Pasaporte *</label>
+                            <input type="text" id="dni" name="dni" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <div class="select-cont" style="padding-right: 5px;">
+                                <label for="country">País / Región *</label><br>
+                                <select id="country" name="pais" class="form-control" required>
+                                    <option value="Argentina">Argentina</option>
+                                </select>
+                            </div>
+                            <div class="select-cont" style="padding-left: 5px;">
+                                <label for="state">Región / Provincia *</label>
+                                <select id="state" name="provincia" class="form-control" required>
+                                    <option value="Jujuy">Jujuy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección *</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <div class="select-cont" style="padding-right: 5px;">
+                                <label for="city">Ciudad *</label>
+                                <select id="city" name="ciudad" class="form-control" required>
+                                    <option value="San Salvador de Jujuy">San Salvador de Jujuy</option>
+                                </select>
+                            </div>
+                            <div class="select-cont" style="padding-left: 5px;">
+                                <label for="codigo_postal">Código postal / ZIP *</label>
+                                <input type="text" id="codigo_postal" name="codigo_postal" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Dirección de correo electrónico *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3">Enviar Reserva</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Contenedor para mostrar la salida -->
+        <div id="resultado"></div>
+    </div>
+    <footer class="tm-footer">
+        <div class="tm-us">
+            <p class="bold">Sobre Nosotros</p>
+            <p>Somos un equipo apasionado por la hospitalidad, comprometido a brindar a nuestros huéspedes una experiencia de alojamiento única y memorable en la hermosa ciudad de Salta.</p>    
+        </div>
+        <div class="tm-address">
+            <p class="bold">Ubicación</p>
+            <p>Avenida Jujuy N° 159, A4400 Salta<br>
+            Numero : 0387 449-4594 <br>
+            Email : HostalNuevoP@hotmail.com</p>    
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sharedBedOptions = document.getElementById('shared-bed-options');
+            const privateOptions = document.getElementById('private-options');
+
+            sharedBedOptions.style.display = 'none';
+            privateOptions.style.display = 'none';
+
+            document.querySelectorAll('input[name="servicio"]').forEach(input => {
+                input.addEventListener('change', function () {
+                    const camasChecked = document.getElementById('camas').checked;
+                    const habitacionesChecked = document.getElementById('habitaciones').checked;
+                    sharedBedOptions.style.display = camasChecked ? 'block' : 'none';
+                    privateOptions.style.display = habitacionesChecked ? 'block' : 'none';
+                });
+            });
+
+            document.getElementById('reservation-form').addEventListener('submit', function(event) {
+
+                // Capturar los datos del formulario
+                const checkIn = document.getElementById('check-in').value;
+                const checkOut = document.getElementById('check-out').value;
+                const nombre = document.getElementById('nombre').value;
+                const apellidos = document.getElementById('apellidos').value;
+                const guests = document.getElementById('guests').value;
+                const telefono = document.getElementById('telefono').value;
+                const email = document.getElementById('email').value;
+                const servicio = [...document.querySelectorAll('input[name="servicio"]:checked')].map(el => el.value).join(', ');
+                const direccion = document.getElementById('direccion').value;
+                const ciudad = document.getElementById('city').value;
+                const pais = document.getElementById('country').value;
+                const provincia = document.getElementById('state').value;
+                const codigoPostal = document.getElementById('codigo_postal').value;
+
+                // Capturar opciones de camas
+                const individualBeds = document.getElementById('individual_beds').value;
+                const matrimonialBeds = document.getElementById('matrimonial_beds').value;
+
+                // Capturar opciones de habitaciones
+                const privateMatrimonial = document.getElementById('private_matrimonial').value;
+                const privateFour = document.getElementById('private_four').value;
+
+                // Generar salida
+                const resultadoDiv = document.getElementById('resultado');
+                resultadoDiv.innerHTML = `
+                    <h2>Detalles de la Reserva</h2>
+                    <p><strong>Fecha de Ingreso:</strong> ${checkIn}</p>
+                    <p><strong>Fecha de Egreso:</strong> ${checkOut}</p>
+                    <p><strong>Nombre:</strong> ${nombre} ${apellidos}</p>
+                    <p><strong>Cantidad de Huéspedes:</strong> ${guests}</p>
+                    <p><strong>Teléfono:</strong> ${telefono}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Tipo de Servicio:</strong> ${servicio}</p>
+                    <p><strong>Dirección:</strong> ${direccion}</p>
+                    <p><strong>Ciudad:</strong> ${ciudad}</p>
+                    <p><strong>País:</strong> ${pais}</p>
+                    <p><strong>Provincia:</strong> ${provincia}</p>
+                    <p><strong>Código Postal:</strong> ${codigoPostal}</p>
+                    <p><strong>Camas Individuales:</strong> ${individualBeds}</p>
+                    <p><strong>Camas Matrimoniales:</strong> ${matrimonialBeds}</p>
+                    <p><strong>Habitación Privada Matrimonial:</strong> ${privateMatrimonial}</p>
+                    <p><strong>Habitación Privada para 4:</strong> ${privateFour}</p>
+                `;
+            });
+        });
+
+        function toggleButton(button) {
+            button.classList.toggle('selected');
+            const hiddenInput = document.getElementById(button.id.replace('-btn', ''));
+            hiddenInput.value = button.classList.contains('selected') ? 'true' : 'false';
+        }
+    </script>
+</body>
+</html>
