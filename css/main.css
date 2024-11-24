@@ -6,21 +6,19 @@
 
 body{
     background-color: #211f17;
-    }
+}
+
 /* =============================================================================== */
 /* =============================================================================== */
 /* =============================================================================== */
 
 /* header */
-
 .tm-header{
-    /* background-color: #EECC8C; */
     display: block;
     padding: 20px;
-    background-image: url('/pagina/images/fondo-header.jpg'); /* Cambia esto por la ruta de tu imagen */
-    background-size: cover; /* Esto asegura que la imagen cubra todo el espacio del header */
-    background-position: center; /* Esto centra la imagen en el header */
-    
+    background-image: url('https://denomades.imgix.net/destinos/salta/256/vista-cafayate.jpg?w=907&h=494&fit=crop&q=100'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
 }
 
 .tm-logo{
@@ -32,7 +30,8 @@ body{
 }
 
 .tm-nav{
-    position: sticky; top: 0;
+    position: sticky; 
+    top: 0;
     max-width: 90%;
     border: 2px solid #3a382e;
     border-radius: 25px;
@@ -70,90 +69,87 @@ body{
 /* =============================================================================== */
 
 /* Imagenes pagina principal */
-
 .carrusel-imagenes {
     justify-content: space-around;
-    background-color: #211f17; /*color para el fondo  */
+    background-color: #211f17;
     display: flex;
     gap: 1rem;
 }
 
-.carrusel.unico {
-    display: flex;  /* Los elementos hijos se colocarán en una fila horizontal */
-    flex-wrap: nowrap;  /* Evita que los elementos se muevan a una nueva línea */
+.carrusel {
+    display: flex;
+    flex-wrap: nowrap;
     gap: 3.5rem;
 }
 
 .carrusel-item {
-    position: relative;  /* Esto permite que los textos dentro del item se posicionen en relación con él */
-    min-width: 100%;  /* Cada item ocupa el 100% del ancho del contenedor del carrusel */
-    margin-top:  3rem;
+    position: relative;
+    min-width: 100%;
+    margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
-
 .imagen-carrusel {
-    width: 350px;  /* La imagen ocupa todo el ancho del item */
-    height: 350px;  /* La altura se ajusta automáticamente para mantener la proporción de la imagen */
-    display: block;  /* Asegura que la imagen se comporte como un bloque y no como un inline element */
+    width: 350px;
+    height: 350px;
+    display: block;
     border-radius: 25px ;
     border: 3px solid white;
-    transition: transform 0.3s ease; /* Agrega la transición para el efecto de transformación */
+    transition: transform 0.3s ease;
 }
-
 
 .imagen-carrusel:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen al pasar el mouse */
+    transform: scale(1.05);
 }
 
-
 .texto-carrusel {
-    position: absolute;  /* Se posiciona en relación con el item del carrusel */
-    bottom: 20px;  /* A 20px de la parte inferior del item */
-    left: 50%;  /* A 50% del borde izquierdo del contenedor */
-    transform: translateX(-50%);  /* Desplaza el contenedor hacia la izquierda por la mitad de su ancho */
-    color: #fff;  /* El texto será blanco para contrastar con el fondo */
-    padding: 10px;  /* Espaciado interno alrededor del texto */
-    border-radius: 25px;  /* Bordes ligeramente redondeados para darle un aspecto moderno */
-    max-width: 300px;  /* Limita el ancho del bloque de texto */
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 10px;
+    border-radius: 25px;
+    max-width: 300px;
     backdrop-filter: blur(5px);
     box-shadow: 0px 0px 30px rgba(227,228,237,0.37);
     border: 2px solid rgb(255,255,255,0.18);
+    text-align: center;
 }
 
 .negrita {
-    font-weight: bold;  /* Hace que el texto sea más grueso */
-    font-size: 1.5rem;  /* Tamaño de fuente más grande para resaltar este texto */
-    margin-bottom: 5px;  /* Espacio inferior entre este texto y el siguiente párrafo */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
 }
 
 .simple {
-    font-size: 1rem;  /* Tamaño de fuente estándar */
-    margin: 2px 0;  /* Espaciado vertical entre los párrafos simples */
+    font-size: 1rem;
+    margin: 2px 0;
 }
 
 .izquierda, .derecha {
-    position: absolute;  /* Se posicionan en relación al contenedor del carrusel */
-    top: 50%;  /* Se colocan en el centro vertical del contenedor */
-    transform: translateY(-50%);  /* Ajuste preciso para centrar verticalmente */
-    font-size: 2rem;  /* Tamaño grande de la flecha para que sea visible */
-    color: #fff;  /* Las flechas son blancas */
-    background: rgba(0, 0, 0, 0.5);  /* Fondo semitransparente para resaltar sobre la imagen */
-    padding: 10px;  /* Espaciado interno alrededor de la flecha */
-    cursor: pointer;  /* Muestra un cursor de mano para indicar que son interactuables */
-    border-radius: 50%;  /* Bordes redondeados para darles un estilo circular */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .izquierda {
-    left: 10px;  /* A 10px del borde izquierdo del contenedor */
+    left: 10px;
 }
 
 .derecha {
-    right: 10px;  /* A 10px del borde derecho del contenedor */
+    right: 10px;
 }
 
 .izquierda:hover, .derecha:hover {
-    background: rgba(0, 0, 0, 0.8);  /* Fondo más oscuro para indicar que el elemento es interactivo */
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* =============================================================================== */
@@ -161,7 +157,6 @@ body{
 /* =============================================================================== */
 
 /* servicios pagina principal */
-
 .tm-service{
     max-width: 30%;
     width: 30%;
@@ -184,15 +179,14 @@ body{
 
 .tm-service div{
     display: inline-block;
-
     max-width: 75%;
     padding: 5%;
 }
 
 .tm-service p{
     font-size: 1.5vmax;
-    
 }
+
 .tm-service .b{
     padding-bottom: 2%;
     font-weight: 700;
@@ -203,11 +197,9 @@ body{
 /* =============================================================================== */
 
 /* Boton de hacer reservas */
-
 .tm-res{
     background: #cc4151;
     padding: 2%;
-
 }
 
 .tm-resbutton p{
@@ -221,6 +213,7 @@ body{
     border: 1px solid #fff;
     border-radius: 25px;
 }
+
 .tm-resbutton a{
     text-decoration: none;
 }
@@ -235,13 +228,11 @@ body{
 /* =============================================================================== */
 
 /* footer */
-
 .tm-footer{
     background: #211f17;
     display: block;
     padding: 20px;
     position: relative;
-
 }
 
 .tm-us{
@@ -279,7 +270,6 @@ body{
     margin: 0.5%;
     width: 3%;
     height: auto;
-    
 }
 
 .tm-up{
@@ -288,7 +278,6 @@ body{
     right: 3%;
     width: 3%;
     height: auto;
-    
 }
 
 .tm-review:focus{
@@ -304,6 +293,187 @@ body{
 /* =============================================================================== */
 
 .tm-main{
+    background-color: #ec3c6a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: white;
+    font-weight: 600;
+    font-size: 2.25em;
+}
+
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
+
+.main__heading{
+    padding-top: 2rem;
+}
+
+/* =============================================================================== */
+/* MEDIA QUERIES ==================================================================== */
+
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
+
+/* Activar cuando el ancho sea MENOR a 768px */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    .tm-header img {
+        top: 0;
+        left: 0;
+        width: 80%; /* Ajusta el tamaño al 100% del contenedor */
+        height: auto; /* Mantiene la proporción original de la imagen */
+        background-color: red;
+        padding: 0px;
+        margin: 0 auto; /* Centra horizontalmente la imagen */
+        display: block;
+        box-sizing: border-box;
+    }
+    .tm-header{
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 5px;
+    }
+    .tm-nav{
+        display: block;
+        text-align: center;
+        width: 100%;
+        border-radius: 0%;
+        margin-top: 100px; 
+    }
+    .tm-nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tm-nav .tm-list {
+        margin-bottom: 5px;
+    }
+
+    .tm-nav div{
+        display: block;
+        text-align: center;
+        padding: 0px;
+    }
+
+    .tm-nav div ul li {
+        padding: 0%;
+    }
+
+    .tm-nav div ul li a {
+        height: 2rem;
+        font-size: 1rem;
+        display: block;
+        text-align: center;
+        justify-content: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .carrusel {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .carrusel-item {
+        margin: 0;
+        padding: 5px;
+    }
+
+    .imagen-carrusel {
+        width: 100%;
+        height: auto;
+        padding-bottom: 5px;
+    }
+
+    .texto-carrusel {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        text-align: center;
+        padding: 1px;
+        box-sizing: border-box;
+        width: 80%;
+    }
+
+    .negrita {
+        font-size: 4vw;
+        font-weight: bold;
+    }
+
+    .simple {
+        font-size: 4vw;
+    }
+
+    .carrusel-item {
+        position: relative;
+    }
+
+    .tm-servicesection {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .tm-service {
+        display: flex;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        align-items: center;
+    }
+
+    .tm-serimage {
+        width: 10%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .tm-footer {
+        display: flex;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 20px;
+        background-color: black;
+        box-sizing: border-box;
+        color: white;
+    }
+
+    .tm-footer {
+        flex-direction: column;
+    }
+
+    .tm-us, .tm-address {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .tm-us p, .tm-address p {
+        margin: 5px 0;
+        width: 100% !important;
+    }
+    .tm-main {
         background-color: #ec3c6a;
         display: flex;
         justify-content: center;
@@ -312,12 +482,14 @@ body{
         color: white;
         font-weight: 600;
         font-size: 2.25em;
+        overflow: hidden; /* Asegura que no haya scroll */
     }
 
-/* =============================================================================== */
-/* =============================================================================== */
-/* =============================================================================== */
+    .tm-service p {
+        font-size: 4vw; /* Tamaño proporcional al ancho de la pantalla */
+    }
 
-.main__heading{
-    padding-top: 2rem;
+    .tm-service .b {
+        font-size: 4vw; /* Tamaño proporcional al ancho de la pantalla */
+    }
 }
