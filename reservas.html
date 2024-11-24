@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Hostal Nuevo Puesto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -10,7 +11,7 @@
         body {
             background-color: #211f17;
         }
-        .container {
+        .rcontainer {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -95,7 +96,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="rcontainer">
         <form id="reservation-form" action="https://formspree.io/f/xrbggdvo" method="POST">
             <div style="display: flex;">
                 <div class="form-section" id="reservation-div">
@@ -227,20 +228,17 @@
                 </div>
             </div>
         </form>
+    </div>
 
         <!-- Contenedor para mostrar la salida -->
         <div id="resultado"></div>
     </div>
     <footer class="tm-footer">
-        <div class="tm-us">
-            <p class="bold">Sobre Nosotros</p>
-            <p>Somos un equipo apasionado por la hospitalidad, comprometido a brindar a nuestros huéspedes una experiencia de alojamiento única y memorable en la hermosa ciudad de Salta.</p>    
-        </div>
         <div class="tm-address">
-            <p class="bold">Ubicación</p>
-            <p>Avenida Jujuy N° 159, A4400 Salta<br>
-            Numero : 0387 449-4594 <br>
-            Email : HostalNuevoP@hotmail.com</p>    
+        <p class="bold">Contacto</p>
+        <p>Avenida Jujuy N° 159, A4400 Salta<br>
+        Numero : 0387 449-4594 <br>
+        Email : HostalNuevoP@hotmail.com</p> 
         </div>
     </footer>
 
