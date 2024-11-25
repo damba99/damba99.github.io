@@ -225,20 +225,9 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="_next" value="https://damba99.github.io/">
         </form>
     </div>
-
-        <!-- Contenedor para mostrar la salida -->
-        <div id="resultado"></div>
-    </div>
-    <footer class="tm-footer">
-        <div class="tm-address">
-        <p class="bold">Contacto</p>
-        <p>Avenida Jujuy N° 159, A4400 Salta<br>
-        Numero : 0387 449-4594 <br>
-        Email : HostalNuevoP@hotmail.com</p> 
-        </div>
-    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -449,7 +438,19 @@
                 console.error('Error cargando el archivo JSON de estados:', error);
             });
     }
+    const $form = document.querySelector('#reservation-form')
 
+    $form.addEventListener('submit', handleSubmit)
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+        const form = new FormData(this)
+        const response = await fetch(this.action, {method: this.method, body: form, headers: {'Accept': 'aplication/json'}})
+        if(response.ok) {
+            this.reset()
+            alert('Formulario enviado')
+        }
+    }
     </script>
 </body>
 </html>
