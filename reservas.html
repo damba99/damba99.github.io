@@ -14,7 +14,7 @@
         .rcontainer {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             background-color: #211f17;
         }
         .form-section {
@@ -112,12 +112,12 @@
                     <div class="form-group">
                         <label>Tipo de Servicio:</label><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="camas" name="servicio" value="Camas">
-                            <label class="form-check-label" for="camas">Camas</label>
-                        </div>
-                        <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="habitaciones" name="servicio" value="Habitaciones">
                             <label class="form-check-label" for="habitaciones">Habitaciones</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="camas" name="servicio" value="Camas">
+                            <label class="form-check-label" for="camas">Camas</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -189,13 +189,13 @@
                             <div class="select-cont" style="padding-right: 5px;">
                                 <label for="country">País / Región *</label><br>
                                 <select id="country" name="pais" class="form-control" required>
-                                    <option value="Argentina">Argentina</option>
+
                                 </select>
                             </div>
                             <div class="select-cont" style="padding-left: 5px;">
                                 <label for="state">Región / Provincia *</label>
                                 <select id="state" name="provincia" class="form-control" required>
-                                    <option value="Jujuy">Jujuy</option>
+
                                 </select>
                             </div>
                         </div>
@@ -206,9 +206,7 @@
                         <div class="form-group" style="display: flex; justify-content: space-between;">
                             <div class="select-cont" style="padding-right: 5px;">
                                 <label for="city">Ciudad *</label>
-                                <select id="city" name="ciudad" class="form-control" required>
-                                    <option value="San Salvador de Jujuy">San Salvador de Jujuy</option>
-                                </select>
+                                <input id="city" name="ciudad" class="form-control" required>
                             </div>
                             <div class="select-cont" style="padding-left: 5px;">
                                 <label for="codigo_postal">Código postal / ZIP *</label>
@@ -312,6 +310,146 @@
             const hiddenInput = document.getElementById(button.id.replace('-btn', ''));
             hiddenInput.value = button.classList.contains('selected') ? 'true' : 'false';
         }
+    // Función para establecer las fechas mínimas
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener la fecha actual en formato YYYY-MM-DD
+        var today = new Date().toISOString().split('T')[0];
+        
+        // Establecer el mínimo para la fecha de ingreso (check-in) como la fecha actual
+        var checkInElement = document.getElementById('check-in');
+        checkInElement.setAttribute('min', today);
+        
+        // Obtener el campo de "check-out"
+        var checkOutElement = document.getElementById('check-out');
+        
+        // Asegurar que check-out no pueda ser antes del día siguiente de check-in
+        checkInElement.addEventListener('change', function () {
+            var checkInDate = this.value;
+            if (checkInDate) {
+                // Sumar un día a la fecha de check-in para la fecha mínima de check-out
+                var checkOutMinDate = new Date(checkInDate);
+                checkOutMinDate.setDate(checkOutMinDate.getDate() + 1);
+                
+                // Convertir la fecha de check-out mínima a formato YYYY-MM-DD
+                var checkOutMinDateStr = checkOutMinDate.toISOString().split('T')[0];
+                
+                // Establecer la fecha mínima de check-out
+                checkOutElement.setAttribute('min', checkOutMinDateStr);
+            }
+        });
+    });
+    // Función para permitir solo letras
+    function soloLetras(event) {
+        const input = event.target;
+        const regex = /[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g; // Expresión regular para letras y espacios
+
+        // Reemplazar cualquier carácter que no sea una letra o espacio
+        input.value = input.value.replace(regex, '');
+    }
+
+    // Asignar el evento a los campos
+    document.getElementById('nombre').addEventListener('input', soloLetras);
+    document.getElementById('apellidos').addEventListener('input', soloLetras);
+    //validad dni
+    document.getElementById("dni").addEventListener("input", function(event) {
+        let value = this.value;
+        value = value.replace(/[^0-9a-zA-Z]/g, '');
+        let lettersCount = (value.match(/[a-zA-Z]/g) || []).length;
+        if (lettersCount > 4) {
+            value = value.replace(/[a-zA-Z]$/, '');
+        }
+        this.value = value;
+    });
+    
+    //validacion telefono
+    document.getElementById("telefono").addEventListener("keydown", function(event) {
+        const value = this.value;
+        const key = event.key;
+        const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '(', ')', 'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'];
+    
+        if (!allowedKeys.includes(key)) {
+            event.preventDefault();
+        }
+    
+        if (key === '+' && value.indexOf('+') === -1 && value.length > 0) {
+            event.preventDefault();
+        }
+    
+        const openParenthesesCount = (value.match(/\(/g) || []).length;
+        const closeParenthesesCount = (value.match(/\)/g) || []).length;
+    
+        if (key === '(' && openParenthesesCount >= 1) {
+            event.preventDefault();
+        }
+    
+        if (key === ')' && closeParenthesesCount >= 1) {
+            event.preventDefault();
+        }
+    
+        if (key === ')' && openParenthesesCount <= closeParenthesesCount) {
+            event.preventDefault();
+        }
+    
+        if (key === '+' && value.indexOf('+') !== -1) {
+            event.preventDefault();
+        }
+    });
+    //agregar los paises al select
+    // Función para cargar los países en el select "country"
+    fetch('asd/pais.json')
+    .then(response => response.json()) // Parseamos el archivo JSON de países
+    .then(data => {
+        const selectCountry = document.getElementById('country');
+        
+        // Llenamos el select de países
+        data.forEach(pais => {
+            const option = document.createElement('option');
+            option.value = pais.id;   // ID del país
+            option.textContent = pais.nombre;  // Nombre del país
+            selectCountry.appendChild(option);  // Agregamos la opción al select
+        });
+
+        // Agregar un evento para cargar los estados cuando se seleccione un país
+        selectCountry.addEventListener('change', function() {
+            cargarEstados(selectCountry.value);  // Llamamos a la función cargarEstados con el ID del país seleccionado
+        });
+    })
+    .catch(error => {
+        console.error('Error cargando el archivo JSON de países:', error);
+    });
+
+// Función para cargar los estados según el país seleccionado
+    function cargarEstados(paisId) {
+        fetch('asd/estado.json')
+            .then(response => response.json())  // Parseamos el archivo JSON de estados
+            .then(data => {
+                const selectState = document.getElementById('state');
+                selectState.innerHTML = '';  // Limpiamos el select de estados antes de agregar nuevas opciones
+                
+                // Filtramos los estados que corresponden al país seleccionado
+                const estadosFiltrados = data.filter(estado => estado.pais_id == paisId);
+                
+                // Si hay estados para ese país, los agregamos al select de estados
+                if (estadosFiltrados.length > 0) {
+                    estadosFiltrados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado.id;   // ID del estado
+                        option.textContent = estado.nombre.replace(/['"]/g, '');  // Nombre del estado
+                        selectState.appendChild(option);  // Agregamos la opción al select
+                    });
+                } else {
+                    // Si no hay estados para ese país, mostramos una opción predeterminada
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No hay estados disponibles para este país';
+                    selectState.appendChild(option);
+                }
+            })
+            .catch(error => {
+                console.error('Error cargando el archivo JSON de estados:', error);
+            });
+    }
+
     </script>
 </body>
 </html>
